@@ -13,15 +13,15 @@ import java.io.IOException;
  */
 public class App extends Application {
 
-    private static Scene scene;
-
+    
     @Override
-    public void start(@SuppressWarnings("exports") Stage stage) throws IOException {
-        FXMLLoader loader = new FXMLLoader(App.class.getResource("primary.fxml"));
+    public void start(@SuppressWarnings("exports") Stage primaryStage) throws IOException {
+        FXMLLoader loader = new FXMLLoader(App.class.getResource("gui/MainView.fxml"));
         Parent parent = loader.load();
-        scene = new Scene(parent, 640, 480);
-        stage.setScene(scene);
-        stage.show();
+        Scene mainScene =  new Scene(parent);
+        primaryStage.setScene(mainScene);
+        primaryStage.setTitle("Sample JavaFX application");
+        primaryStage.show();
     }
 
     public static void main(String[] args) {
