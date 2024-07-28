@@ -15,26 +15,23 @@ import com.pedro.model.entities.Department;
 public class DepartmentDaoJDBC implements DepartamentDao{
 private Connection conn;
 
-    public DepartmentDaoJDBC(Connection conn) {
+    public DepartmentDaoJDBC(@SuppressWarnings("exports") Connection conn) {
         this.conn = conn;
     }
 
     @Override
     public void insert(Department obj) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'insert'");
+
     }
 
     @Override
     public void update(Department obj) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
+
     }
 
     @Override
     public void delete(Department obj) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'delete'");
+
     }
 
     @Override

@@ -19,7 +19,7 @@ import com.pedro.model.entities.Seller;
 public class SellerDaoJDBC implements SellerDao {
     private Connection conn;
 
-    public SellerDaoJDBC(Connection conn) {
+    public SellerDaoJDBC(@SuppressWarnings("exports") Connection conn) {
         this.conn = conn;
     }
 

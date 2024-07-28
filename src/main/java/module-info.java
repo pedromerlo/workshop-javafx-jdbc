@@ -5,6 +5,7 @@ module com.pedro {
 
     opens com.pedro to javafx.fxml;
     opens com.pedro.gui to javafx.fxml;
+    opens com.pedro.gui.util to javafx.fxml;
     opens com.pedro.model.services to javafx.fxml;
     
     exports com.pedro;
