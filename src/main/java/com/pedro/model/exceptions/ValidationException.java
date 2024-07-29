@@ -4,8 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ValidationException extends RuntimeException{
-    private static final Long serialVersionUID = 1L;
-
     private Map<String,String> errors = new HashMap<>();
 
     public ValidationException (String msg){
