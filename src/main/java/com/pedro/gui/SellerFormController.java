@@ -1,9 +1,11 @@
 package com.pedro.gui;
 
 import java.net.URL;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -130,6 +132,27 @@ public class SellerFormController implements Initializable {
             exception.addError("name", "Filed can't be empty");
         }
         obj.setName(txtName.getText());
+
+        if (txtEmail.getText() == null || txtEmail.getText().trim().equals("")) {
+            exception.addError("email", "Filed can't be empty");
+        }
+        obj.setEmail(txtEmail.getText());
+
+        if(dpBirthDate.getValue()== null){
+            exception.addError("birthDate", "Filed can't be empty");
+        }else{
+            Instant instant = Instant.from(dpBirthDate.getValue().atStartOfDay(ZoneId.systemDefault()));
+            obj.setBirthDate(Date.from(instant));
+        }
+
+        if (txtBaseSalary.getText() == null || txtBaseSalary.getText().trim().equals("")) {
+            exception.addError("baseSalary", "Filed can't be empty");
+        }
+
+        obj.setBaseSalary(Utils.tryParseToDouble(txtBaseSalary.getText()));
+
+        obj.setDepartment(comboBoxDepartment.getValue());
+
         if (exception.getErrors().size() > 0) {
             throw exception;
         }
@@ -188,7 +211,28 @@ public class SellerFormController implements Initializable {
         Set<String> fileds = errors.keySet();
         if (fileds.contains(("name"))) {
             labelErrorName.setText(errors.get("name"));
+        }else{
+            labelErrorName.setText(errors.get(""));
         }
+
+        if (fileds.contains(("email"))) {
+            labelErrorEmail.setText(errors.get("email"));
+        }else{
+            labelErrorEmail.setText(errors.get(""));
+        }
+
+        if (fileds.contains(("baseSalary"))) {
+            labelErrorBaseSalary.setText(errors.get("baseSalary"));
+        }else{
+            labelErrorBaseSalary.setText(errors.get(""));
+        }
+
+        if (fileds.contains(("birthDate"))) {
+            labelErrorBirthDate.setText(errors.get("birthDate"));
+        }else{
+            labelErrorBirthDate.setText(errors.get(""));
+        }
+
     }
 
     private void initializeComboBoxDepartment() {
