@@ -13,6 +13,7 @@ import com.pedro.gui.DataChengeListener.DataChangeListener;
 import com.pedro.gui.util.Alerts;
 import com.pedro.gui.util.Utils;
 import com.pedro.model.entities.Seller;
+import com.pedro.model.services.DepartmentService;
 import com.pedro.model.services.SellerService;
 
 import javafx.beans.property.ReadOnlyObjectWrapper;
@@ -112,7 +113,8 @@ public class SellerListController implements Initializable, DataChangeListener {
 			Pane pane = loader.load();
 			SellerFormController controller = loader.getController();
 			controller.setSeller(obj);
-			controller.setSellerService(new SellerService());
+			controller.setService(new SellerService(), new DepartmentService());
+			controller.loadAssociatedObjects();
 			controller.subscriveDataChangeListener(this);
 			controller.updateFormData();
 
@@ -125,6 +127,7 @@ public class SellerListController implements Initializable, DataChangeListener {
 			dialogStage.showAndWait();
 
 		} catch (IOException e) {
+			e.printStackTrace();
 			Alerts.showAlert("Io Exception", "Error loading view", e.getMessage(), AlertType.ERROR);
 		}
 	}
